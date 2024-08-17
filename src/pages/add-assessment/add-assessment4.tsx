@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import UserInfoForm from "../../components/forms/UserInfo-Form";
 
-const AddAssessment2 = () => {
+const AddAssessment1 = () => {
   const formik = useFormik({
     initialValues: {},
     validationSchema: Yup.object({}),
@@ -15,12 +15,12 @@ const AddAssessment2 = () => {
   return (
     <Cover>
       <div className="p-6 text-center">
-        <h1 className="text-[22px] font-medium">پیوست ۲</h1>
-        <h2>بیمار مبتلا به سرطان</h2>
+        <h1 className="text-[22px] font-medium">پیوست ۴</h1>
+        <h2>بیمار مبتلا به دیابت</h2>
       </div>
       <UserInfoForm formik={formik} />
     </Cover>
   );
 };
 
-export default AddAssessment2;
+export default AddAssessment1;

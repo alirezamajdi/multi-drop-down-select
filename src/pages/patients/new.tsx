@@ -1,9 +1,9 @@
-import Cover from "../../components/cover/Cover";
-import * as Yup from "yup";
-import { useFormik } from "formik";
 import UserInfoForm from "../../components/forms/UserInfo-Form";
+import Cover from "../../components/cover/Cover";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-const AddAssessment2 = () => {
+const New = () => {
   const formik = useFormik({
     initialValues: {},
     validationSchema: Yup.object({}),
@@ -11,16 +11,11 @@ const AddAssessment2 = () => {
       console.log("ccc", values);
     },
   });
-
   return (
     <Cover>
-      <div className="p-6 text-center">
-        <h1 className="text-[22px] font-medium">پیوست ۲</h1>
-        <h2>بیمار مبتلا به سرطان</h2>
-      </div>
       <UserInfoForm formik={formik} />
     </Cover>
   );
 };
 
-export default AddAssessment2;
+export default New;

@@ -1,22 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
-import { SidebarContextProvider } from "./store/sidebarContext";
-import { ThemeContextProvider } from "./store/themeContext";
-import { LoginContextProvider } from "./store/loginContext";
+import ReduxProvider from "./store/redux-provider.tsx";
+import { SidebarContextProvider } from "./context/sidebarContext.tsx";
+import { ThemeContextProvider } from "./context/themeContext.tsx";
+import { LoginContextProvider } from "./context/loginContext.tsx";
 import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider>
-      <LoginContextProvider>
-        <ThemeContextProvider>
-          <SidebarContextProvider>
-            <App />
-          </SidebarContextProvider>
-        </ThemeContextProvider>
-      </LoginContextProvider>
+      <ReduxProvider>
+        <LoginContextProvider>
+          <ThemeContextProvider>
+            <SidebarContextProvider>
+              <App />
+            </SidebarContextProvider>
+          </ThemeContextProvider>
+        </LoginContextProvider>
+      </ReduxProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

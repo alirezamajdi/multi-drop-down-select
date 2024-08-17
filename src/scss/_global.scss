@@ -2,7 +2,7 @@
 
 html {
   /* ****Colors**** */
-  --primaryColor: #ee384e;
+  --primaryColor: #3182ce;
   --secondaryColor: #3c4b6d;
   //light theme
   --bgc: #f2f2f2;
@@ -279,4 +279,10 @@ html[dir="rtl"] {
 ::-webkit-scrollbar-thumb {
   background-color: var(--secondaryColor);
   border-radius: 100vw;
+}
+
+
+.chakra-select__icon-wrapper{
+  right: auto !important;
+  left: 8px;
 }

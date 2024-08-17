@@ -1,5 +1,5 @@
-import  { useContext } from "react";
-import LoginContext from "../store/loginContext";
+import { useContext } from "react";
+import LoginContext from "../context/loginContext";
 
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 

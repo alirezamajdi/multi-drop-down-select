@@ -1,9 +1,9 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { useWindowSize } from "usehooks-ts";
 import SearchBox from "./searchBox/SearchBox";
 import TopNavRightBox from "./rightBox/TopNavRightBox";
-import SidebarContext from "../../store/sidebarContext";
+import SidebarContext from "../../context/sidebarContext";
 
 import classes from "./TopNav.module.scss";
 
@@ -25,7 +25,7 @@ function TopNav() {
         >
           <Icon icon="ci:menu-alt-03" width="24" />
         </div>
-     
+
         <div className={classes.search_desktop_wrapper}>
           <SearchBox />
         </div>

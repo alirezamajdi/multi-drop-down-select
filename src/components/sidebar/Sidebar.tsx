@@ -1,9 +1,9 @@
-import {  useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useWindowSize } from "usehooks-ts";
 import sidebarNav from "../../config/sidebarNav";
-import SidebarContext from "../../store/sidebarContext";
-import LoginContext from "../../store/loginContext";
+import SidebarContext from "../../context/sidebarContext";
+import LoginContext from "../../context/loginContext";
 import { Icon } from "@iconify/react";
 import classes from "./Sidebar.module.scss";
 import Item from "./Item";
@@ -24,7 +24,6 @@ function Sidebar() {
     loginCtx.toggleLogin();
   }
 
-
   return (
     <div
       className={`${classes.sidebar} ${
@@ -37,7 +36,12 @@ function Sidebar() {
       </div>
       <div className={classes.sidebar__menu}>
         {sidebarNav.map((nav, index) => (
-          <Item key={index} {...nav} index={index} openSidebarHandler={openSidebarHandler}/>
+          <Item
+            key={index}
+            {...nav}
+            index={index}
+            openSidebarHandler={openSidebarHandler}
+          />
         ))}
       </div>
 

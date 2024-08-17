@@ -1,24 +1,30 @@
 import React, { ReactNode } from "react";
-
-import classes from "./Button.module.scss";
+import { Button as ButtonCM } from "@chakra-ui/react";
 
 interface Props {
-  type?: "button" | "submit";
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  outline?: boolean;
   children: ReactNode;
+  className?: string;
+  isLoading?: boolean;
+  variant?: "solid" | "outline";
 }
-const Button: React.FC<Props> = (props) => {
+const Button: React.FC<Props> = ({
+  onClick,
+  className,
+  children,
+  isLoading,
+  variant = "solid",
+}) => {
   return (
-    <button
-      className={`${classes.btn} ${
-        props.outline ? classes.outline : classes.button
-      } `}
-      type={props.type || "button"}
-      onClick={props.onClick}
+    <ButtonCM
+      onClick={onClick}
+      isLoading={isLoading}
+      className={className}
+      colorScheme={"blue"}
+      variant={variant}
     >
-      {props.children}
-    </button>
+      {children}
+    </ButtonCM>
   );
 };
 

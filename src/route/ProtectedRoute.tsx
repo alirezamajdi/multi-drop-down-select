@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Login from "../pages/login";
-import LoginContext from "../store/loginContext";
+import LoginContext from "../context/loginContext";
 
 // interface Props {
 //   isAuthenticated: boolean;

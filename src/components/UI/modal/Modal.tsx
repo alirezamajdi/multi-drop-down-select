@@ -33,7 +33,7 @@ const ModalOverlay: React.FC<IModal> = (props) => {
           <p>{props.message}</p>
         </div>
         <footer className={classes.actions}>
-          <Button outline={true} onClick={props.onConfirm}>
+          <Button  onClick={props.onConfirm}>
             لغو
           </Button>
           <button className={classes.delete} onClick={props.onConfirm}>
