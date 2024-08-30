@@ -18,32 +18,32 @@ const sidebarNav = [
       {
         link: "/add-assessment1",
         section: "add-assessment1",
-        text: "پیوست" + " ۱",
+        text: "پیوست" + " ۱  (آمپوتاسیون)",
       },
       {
         link: "/add-assessment2",
         section: "add-assessment2",
-        text: "پیوست" + " ۲",
+        text: "پیوست" + " ۲  (سرطان)",
       },
       {
         link: "/add-assessment3",
         section: "add-assessment3",
-        text: "پیوست" + " ۳",
+        text: "پیوست" + " ۳ (مزمن انسدادی ریوی)",
       },
       {
         link: "/add-assessment4",
         section: "add-assessment4",
-        text: "پیوست" + " ۴",
+        text: "پیوست" + " ۴ (سکته مغزی)",
       },
       {
         link: "/add-assessment5",
         section: "add-assessment5",
-        text: "پیوست" + " ۵",
+        text: "پیوست" + " ۵  (دیابت)",
       },
       {
         link: "/add-assessment6",
         section: "add-assessment6",
-        text: "پیوست" + " ۶",
+        text: "پیوست" + " ۶ (نارسایی احتقانی قلبی)",
       },
     ],
   },

@@ -12,6 +12,13 @@ interface Props {
 
 const DatePicker: FC<Props> = ({ label, formik, name }) => {
   const [selectedDate, setSelectedDate] = useState<any>(null);
+  // const now = new Date();
+  // const today = {
+  //   year: now.getFullYear(),
+  //   month: now.getMonth(),
+  //   day: now.getDay(),
+  // };
+
 
   useEffect(() => {
     if (formik?.values[name!]) {
@@ -48,7 +55,7 @@ const DatePicker: FC<Props> = ({ label, formik, name }) => {
         locale="fa" // setting locale to Persian
         inputClassName="chakra-input css-12ppgmq"
         inputPlaceholder=" "
-        
+        // minimumDate={today}
         colorPrimary="#3182ce"
       />
     </div>

@@ -1,4 +1,4 @@
-import UserInfoForm from "../../components/forms/UserInfo-Form";
+import UserInfoForm from "../../components/forms/Assessment-Form";
 import Cover from "../../components/cover/Cover";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -13,7 +13,7 @@ const New = () => {
   });
   return (
     <Cover>
-      <UserInfoForm formik={formik} />
+      <UserInfoForm formik={formik}>test</UserInfoForm>
     </Cover>
   );
 };

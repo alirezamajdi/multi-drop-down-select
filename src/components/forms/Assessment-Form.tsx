@@ -1,14 +1,17 @@
-import Cover from "../../components/cover/Cover";
-import DatePicker from "../../components/UI/formTags/datePicker/DatePicker";
-import Input from "../../components/UI/formTags/input/Input";
-import Select from "../../components/UI/formTags/select/Select";
-import Checkbox from "../../components/UI/formTags/checkbox/Checkbox";
+import { ReactNode } from "react";
+import Cover from "../cover/Cover";
+import DatePicker from "../UI/formTags/datePicker/DatePicker";
+import Input from "../UI/formTags/input/Input";
+import Select from "../UI/formTags/select/Select";
+import Checkbox from "../UI/formTags/checkbox/Checkbox";
 import { FC } from "react";
+import { Button } from "@chakra-ui/react";
 
 interface Props {
   formik: any;
+  children: ReactNode;
 }
-const UserInfoForm: FC<Props> = ({ formik }) => {
+const UserInfoForm: FC<Props> = ({ formik, children }) => {
   return (
     <Cover>
       <div className="cover-head">الف - اطلاعات بیمار</div>
@@ -67,14 +70,16 @@ const UserInfoForm: FC<Props> = ({ formik }) => {
         <Input label="حساسیت به عوامل محیطی" />
       </div>
       <div className="cover-head">ج - بررسی وضعیت جسمی بیمار</div>
-
       <div className=" grid grid-cols-6 gap-x-6 gap-y-9 p-6">
         <Select label="اختلال حرکتی" className="col-span-3">
           <option value="option1">دارد</option>
           <option value="option2">ندارد</option>
         </Select>
 
-        <Select label="درصورت که بیمار اختلال حرکتی دارد از کدام وسیله استفاده میکند؟"  className="col-span-3">
+        <Select
+          label="درصورت که بیمار اختلال حرکتی دارد از کدام وسیله استفاده میکند؟"
+          className="col-span-3"
+        >
           <option value="option1">واکر</option>
           <option value="option2">عصا</option>
           <option value="option2">ویلچر</option>
@@ -136,9 +141,108 @@ const UserInfoForm: FC<Props> = ({ formik }) => {
       </div>
       <div className="cover-head">و - تواتر پیگیری</div>
       <div className=" grid grid-cols-12 gap-x-6 gap-y-9 p-6">
-        <Input className="col-span-3" label="از هر چند روز یکبار مایل به پیگیری هستین؟" dir="ltr" type="number" />
+        <Input
+          className="col-span-3"
+          label="از هر چند روز یکبار مایل به پیگیری هستین؟"
+          dir="ltr"
+          type="number"
+        />
       </div>
+      {children}
+      <div className="cover-head">ح - ارزیابی</div>
+      <div className="p-5">
+        <Select
+          label="نیاز به آموزش مجدد در کدام حیطه دارد؟"
+          name="home"
+          className="w-1/3"
+          formik={formik}
+        >
+          <option value="option1">دارو</option>
+          <option value="option2">فعالیت</option>
+          <option value="option3">علائم هشدار دهنده</option>
+          <option value="option3">خودمراقبتی</option>
+        </Select>
+      </div>
+      <div className="cover-head">نکات مورد توجه</div>
+      <div className="p-5">
+        <ul className="border rounded-md p-5 flex flex-col  gap-3">
+          <li>
+            <p>
+              - ضروری است قبل از تکمیل پرسشنامه، از بیمار بخواهید تمام داروهایی
+              را که استفاده می کند اعم از داروهایی که در زمان ترخیص تجویز شده و
+              داروهایی که خودش بدون نسخه تهیه کرده و می خورد از جمله ویتامین ها
+              و داروهای گیاهی، در دسترس او باشد.{" "}
+            </p>
+          </li>
+          <li>
+            {" "}
+            <p>
+              - در هر مورد (بررسی وضعیت جسمی/ پرسشنامه) که بیمار اطلاعات و آگاهی
+              مورد نیاز را نداشت، بایستی آموزش ها به صورت روان و راحت به او داده
+              و سپس بازخورد گرفته شود.
+            </p>
+          </li>
+          <li>
+            {" "}
+            <p>
+              - از بیمار یا مراقب وی بخواهید هر سؤالی که دارد از شما بپرسد و این
+              اطمینان را به بدهید که شما بطور کامل پاسخگو هستید.
+            </p>
+          </li>
+          <li>
+            {" "}
+            <p>
+              - شماره تماسی در اختیار بیمار/مراقب وی قرار دهید تا بتواند سؤالات
+              خود را در هر زمان از شما بپرسد.
+            </p>
+          </li>
+          <li>
+            {" "}
+            <p>
+              - شروع پیگیری بیمار طی سه روز اول پس از ترخیص و بر اساس تواتر مشخص
+              شده، می باشد.
+            </p>
+          </li>
+          <li>
+            {" "}
+            <p>
+              - اگر بیمار هرگونه علایمی که با روش های توصیه شده معمول قابل
+              مدیریت نباشد (علایم قلبی تنفسی، اختلال سطح هوشیاری، اختلالات حسی و
+              حرکتی، تب و نظایر آن) داشته باشد، لازم است در اسرع وقت به مرکز
+              درمانی مراجعه کند.
+            </p>
+          </li>
+        </ul>
+      </div>{" "}
+      <div className="cover-head">جزيیات تماس</div>
+      <div className="grid grid-cols-6 p-6 gap-6">
+        <DatePicker label="تاریخ تماس" />
+        <Select label="نتیجه تماس" className="!col-span-1" formik={formik}>
+          <option value="option1">موفق</option>
+          <option value="option2">ناموفق</option>
+        </Select>
+        <Input className="col-span-3" label="علت عدم پاسخ" />
+        <Input label="ساعت شروع مکالمه" type="time" />
 
+        <Input label="ساعت پایان مکالمه" type="time" />
+
+        <Input label="نام پرستار پیگیری" />
+      </div>
+      <div className="cover-head">تاریخ تماس بعدی</div>
+      <div className="p-6">
+        <div className="w-1/3">
+          <DatePicker label="تاریخ تماس بعدی با بیمار را انتخاب کنید" />
+        </div>
+      </div>
+      <div className="p-6">
+        <Button
+          colorScheme="blue"
+          onClick={() => formik.handleSubmit()}
+          size="md"
+        >
+          ذخیره
+        </Button>
+      </div>
     </Cover>
   );
 };
