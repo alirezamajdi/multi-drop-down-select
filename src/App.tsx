@@ -21,6 +21,9 @@ const NewPatient = React.lazy(() => import("./pages/patients/new"));
 const CallManagement = React.lazy(
   () => import("./pages/patients/patient-calls")
 );
+const FileManagement = React.lazy(
+  () => import("./pages/patients/patient-files")
+);
 const MissedCalls = React.lazy(() => import("./pages/calls/missed-calls"));
 const TodayCalls = React.lazy(() => import("./pages/calls/today-calls"));
 
@@ -61,6 +64,7 @@ function App() {
               <Route path="/add-assessment5" element={<AddAssessment5 />} />
               <Route path="/add-assessment6" element={<AddAssessment6 />} />
               <Route path="/patient-calls/:id" element={<CallManagement />} />
+              <Route path="/patient-files/:id" element={<FileManagement />} />
               <Route path="/missed-calls" element={<MissedCalls />} />
               <Route path="/today-calls" element={<TodayCalls />} />
             </Route>

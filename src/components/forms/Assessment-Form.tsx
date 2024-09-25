@@ -8,6 +8,7 @@ import { FC } from "react";
 import { Button } from "@chakra-ui/react";
 
 interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formik: any;
   children: ReactNode;
 }
@@ -18,7 +19,7 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
       <div className=" grid grid-cols-6 gap-x-6 gap-y-9 p-6">
         <Input formik={formik} name="fullName" label="نام و نام خانوادگی" />
 
-        <Input label="نام پدر" />
+        <Input label="نام پدر" name="fatherName" formik={formik} />
         <Input
           formik={formik}
           name="age"
@@ -27,89 +28,153 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
           dir="ltr"
         />
 
-        <DatePicker formik={formik} name="date" label="تاریخ ترخیص" />
+        <DatePicker formik={formik} name="dischargeDate" label="تاریخ ترخیص" />
 
-        <Input label="کد ملی" type="number" dir="ltr" />
-        <Input label="فرد مصاحبه شونده" />
+        <Input
+          formik={formik}
+          label="کد ملی"
+          type="number"
+          name="nationalCode"
+          dir="ltr"
+        />
+        <Input formik={formik} label="فرد مصاحبه شونده" name="interviewee" />
 
-        <Input label="شماره تماس همراه بیمار" type="tel" leftAddon="98+" />
+        <Input
+          label="شماره تماس همراه بیمار"
+          type="tel"
+          name="accompanyingMobile"
+          leftAddon="98+"
+          formik={formik}
+        />
 
-        <Input label="شماره تماس بیمار" type="tel" leftAddon="98+" />
+        <Input
+          label="شماره تماس بیمار"
+          type="tel"
+          name="mobile"
+          leftAddon="98+"
+          formik={formik}
+        />
 
-        <Input label="وضعیت تاهل" />
+        <Input label="وضعیت تاهل" name="maritalStatus" formik={formik} />
 
-        <Input label="شغل" />
-        <Input label="تحصیلات" />
-        <Input label="نوع بیمه" />
+        <Input formik={formik} label="شغل" name="job" />
+        <Input formik={formik} label="تحصیلات" name="education" />
+        <Input formik={formik} label="نوع بیمه" name="insuranceType" />
 
-        <Select label="محل سکونت" name="home" formik={formik}>
-          <option value="option1">منزل شخصی</option>
-          <option value="option2">مراکز نگهداری</option>
-          <option value="option3">منزل فرزندان</option>
+        <Select label="محل سکونت" name="residence" formik={formik}>
+          <option value="منزل شخصی">منزل شخصی</option>
+          <option value="مراکز نگهداری">مراکز نگهداری</option>
+          <option value="منزل فرزندان">منزل فرزندان</option>
         </Select>
       </div>
       <div className="cover-head">ب - اطلاعات بالینی</div>
       <div className=" grid grid-cols-6 gap-x-6 gap-y-9 p-6">
-        <Input label="تشخیص" />
+        <Input formik={formik} label="تشخیص بیماری" name="diseaseDiagnosis" />
 
-        <DatePicker label="تاریخ بستری" />
+        <DatePicker
+          formik={formik}
+          label="تاریخ بستری"
+          name="hospitalizationDate"
+        />
 
         <Input
           label="تعداد روز های بستری در بیمارستان"
           type="number"
           dir="ltr"
+          name="numberOfDaysInHospital"
+          formik={formik}
         />
 
-        <Select label="حساسیت">
-          <option value="option1">دارد</option>
-          <option value="option2">ندارد</option>
+        <Select formik={formik} label="حساسیت" name="hasSensitivity">
+          <option value="دارد">دارد</option>
+          <option value="ندارد">ندارد</option>
         </Select>
 
-        <Input label="حساسیت به دارو" />
-        <Input label="حساسیت به مواد غذایی" />
-        <Input label="حساسیت به عوامل محیطی" />
+        <Input formik={formik} label="حساسیت به دارو" name="drugSensitivity" />
+        <Input
+          formik={formik}
+          label="حساسیت به مواد غذایی"
+          name="foodSensitivity"
+        />
+        <Input
+          formik={formik}
+          label="حساسیت به عوامل محیطی"
+          name="environmentalSensitivity"
+        />
       </div>
       <div className="cover-head">ج - بررسی وضعیت جسمی بیمار</div>
       <div className=" grid grid-cols-6 gap-x-6 gap-y-9 p-6">
-        <Select label="اختلال حرکتی" className="col-span-3">
-          <option value="option1">دارد</option>
-          <option value="option2">ندارد</option>
+        <Select
+          label="اختلال حرکتی"
+          className="col-span-3"
+          name="hasMovementDisorder"
+          formik={formik}
+        >
+          <option value="دارد">دارد</option>
+          <option value="ندارد">ندارد</option>
         </Select>
 
         <Select
           label="درصورت که بیمار اختلال حرکتی دارد از کدام وسیله استفاده میکند؟"
           className="col-span-3"
+          name="deviceMovementDisorder"
+          formik={formik}
         >
-          <option value="option1">واکر</option>
-          <option value="option2">عصا</option>
-          <option value="option2">ویلچر</option>
+          <option value="واکر">واکر</option>
+          <option value="عصا">عصا</option>
+          <option value="ویلچر">ویلچر</option>
         </Select>
         <Input
+          formik={formik}
           className="col-span-4"
           label="درد دارد یا ندارد در صورت پاسخ مثبت، میزان درد بر اساس خط کش درد چه عددی است؟"
+          name="hasPain"
         />
-        <Select className="col-span-1" label="بیماری مزمن">
-          <option value="option1">دارد</option>
-          <option value="option2">ندارد</option>
-        </Select>
-        <Input className="col-span-2" label="در صورت بلی، کدام بیماری؟" />
         <Select
+          formik={formik}
+          className="col-span-1"
+          label="بیماری مزمن"
+          name="hasChronicDisease"
+        >
+          <option value="دارد">دارد</option>
+          <option value="ندارد">ندارد</option>
+        </Select>
+        <Input
+          formik={formik}
+          className="col-span-2"
+          label="در صورت بلی، کدام بیماری؟"
+          name="chronicDiseaseName"
+        />
+        <Select
+          formik={formik}
           className="col-span-3"
           label="در مورد این بیماری کدام اقدام/اقدام هایی را انجام داده است؟"
+          name="actionsChronicDisease"
         >
-          <option value="option1">تحت نظر پزشک است و دارو مصرف نمی کند.</option>
-          <option value="option2">
+          <option value="تحت نظر پزشک است و دارو مصرف نمی کند.">
+            تحت نظر پزشک است و دارو مصرف نمی کند.
+          </option>
+          <option value="داروهای تجویز شده پزشک را مصرف می کند">
             داروهای تجویز شده پزشک را مصرف می کند.
           </option>
-          <option value="option2">
+          <option value="از روش های طب مکمل و سنتی استفاده می کند">
             از روش های طب مکمل و سنتی استفاده می کند.
           </option>
-          <option value="option2">خود درمانی انجام می دهد.</option>
-          <option value="option2">اقدامی انجام نداده است.</option>
+          <option value="خود درمانی انجام می دهد">
+            خود درمانی انجام می دهد.
+          </option>
+          <option value="اقدامی انجام نداده است.">
+            اقدامی انجام نداده است.
+          </option>
         </Select>
-        <Select label="زخم بستر" className="col-span-1">
-          <option value="option1">دارد</option>
-          <option value="option2">ندارد</option>
+        <Select
+          formik={formik}
+          label="زخم بستر"
+          className="col-span-1"
+          name="hasBedsores"
+        >
+          <option value="دارد">دارد</option>
+          <option value="ندارد">ندارد</option>
         </Select>
       </div>
       <div className="cover-head">
@@ -117,27 +182,27 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
       </div>
       <div className="flex flex-wrap gap-x-6 gap-y-9 p-6">
         <Checkbox label="تنگی نفس" formik={formik} name="testbb" />
-        <Checkbox label="ضعف" />
-        <Checkbox label="خستگی" />
-        <Checkbox label="تپش قلب" />
-        <Checkbox label="افزایش وزن" />
-        <Checkbox label="کاهش وزن" />
-        <Checkbox label="بی اشتهایی" />
-        <Checkbox label="بی خوابی" />
-        <Checkbox label="تورم اندام ها" />
-        <Checkbox label="درد" />
-        <Checkbox label=" سرفه" />
-        <Checkbox label="اسهال" />
-        <Checkbox label="یبوست" />
-        <Checkbox label="بی اختیاری ادرار" />
-        <Checkbox label="بی اختیاری مدفوع" />
-        <Checkbox label="تکرر ادرار" />
-        <Checkbox label="پر ادراری" />
-        <Checkbox label="آنوری" />
-        <Checkbox label="تب " />
-        <Checkbox label="مشکلات پوستی " />
-        <Checkbox label="تهوع و استفراغ" />
-        <Checkbox label="عفونت" />
+        <Checkbox formik={formik} label="ضعف" />
+        <Checkbox formik={formik} label="خستگی" />
+        <Checkbox formik={formik} label="تپش قلب" />
+        <Checkbox formik={formik} label="افزایش وزن" />
+        <Checkbox formik={formik} label="کاهش وزن" />
+        <Checkbox formik={formik} label="بی اشتهایی" />
+        <Checkbox formik={formik} label="بی خوابی" />
+        <Checkbox formik={formik} label="تورم اندام ها" />
+        <Checkbox formik={formik} label="درد" />
+        <Checkbox formik={formik} label=" سرفه" />
+        <Checkbox formik={formik} label="اسهال" />
+        <Checkbox formik={formik} label="یبوست" />
+        <Checkbox formik={formik} label="بی اختیاری ادرار" />
+        <Checkbox formik={formik} label="بی اختیاری مدفوع" />
+        <Checkbox formik={formik} label="تکرر ادرار" />
+        <Checkbox formik={formik} label="پر ادراری" />
+        <Checkbox formik={formik} label="آنوری" />
+        <Checkbox formik={formik} label="تب " />
+        <Checkbox formik={formik} label="مشکلات پوستی " />
+        <Checkbox formik={formik} label="تهوع و استفراغ" />
+        <Checkbox formik={formik} label="عفونت" />
       </div>
       <div className="cover-head">و - تواتر پیگیری</div>
       <div className=" grid grid-cols-12 gap-x-6 gap-y-9 p-6">
@@ -146,6 +211,8 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
           label="از هر چند روز یکبار مایل به پیگیری هستین؟"
           dir="ltr"
           type="number"
+          name="followUpFrequency"
+          formik={formik}
         />
       </div>
       {children}
@@ -153,14 +220,14 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
       <div className="p-5">
         <Select
           label="نیاز به آموزش مجدد در کدام حیطه دارد؟"
-          name="home"
+          name="needTraining"
           className="w-1/3"
           formik={formik}
         >
-          <option value="option1">دارو</option>
-          <option value="option2">فعالیت</option>
-          <option value="option3">علائم هشدار دهنده</option>
-          <option value="option3">خودمراقبتی</option>
+          <option value="دارو">دارو</option>
+          <option value="فعالیت">فعالیت</option>
+          <option value="علائم هشدار دهنده">علائم هشدار دهنده</option>
+          <option value="خودمراقبتی">خودمراقبتی</option>
         </Select>
       </div>
       <div className="cover-head">نکات مورد توجه</div>
@@ -216,22 +283,46 @@ const UserInfoForm: FC<Props> = ({ formik, children }) => {
       </div>{" "}
       <div className="cover-head">جزيیات تماس</div>
       <div className="grid grid-cols-6 p-6 gap-6">
-        <DatePicker label="تاریخ تماس" />
-        <Select label="نتیجه تماس" className="!col-span-1" formik={formik}>
-          <option value="option1">موفق</option>
-          <option value="option2">ناموفق</option>
+        <DatePicker label="تاریخ تماس" name="callDate" formik={formik} />
+        <Select
+          label="نتیجه تماس"
+          className="!col-span-1"
+          formik={formik}
+          name="resultCall"
+        >
+          <option value="موفق">موفق</option>
+          <option value="ناموفق">ناموفق</option>
         </Select>
-        <Input className="col-span-3" label="علت عدم پاسخ" />
-        <Input label="ساعت شروع مکالمه" type="time" />
+        <Input
+          className="col-span-3"
+          label="علت عدم پاسخ"
+          formik={formik}
+          name="nonResponseReason"
+        />
+        <Input
+          label="ساعت شروع مکالمه"
+          type="time"
+          formik={formik}
+          name="startTime"
+        />
 
-        <Input label="ساعت پایان مکالمه" type="time" />
+        <Input
+          label="ساعت پایان مکالمه"
+          type="time"
+          formik={formik}
+          name="endTime"
+        />
 
-        <Input label="نام پرستار پیگیری" />
+        <Input label="نام پرستار پیگیری" name="nurseName" formik={formik} />
       </div>
       <div className="cover-head">تاریخ تماس بعدی</div>
       <div className="p-6">
         <div className="w-1/3">
-          <DatePicker label="تاریخ تماس بعدی با بیمار را انتخاب کنید" />
+          <DatePicker
+            label="تاریخ تماس بعدی با بیمار را انتخاب کنید"
+            formik={formik}
+            name="nextCallDate"
+          />
         </div>
       </div>
       <div className="p-6">

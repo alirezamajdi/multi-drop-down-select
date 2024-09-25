@@ -3,14 +3,16 @@ import { FC, useEffect, useState } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import "./DatePicker.scss";
 import { FormLabel } from "@chakra-ui/react";
+import clsx from "clsx";
 
 interface Props {
   label: string;
   formik?: any;
   name?: string;
+  className?: string;
 }
 
-const DatePicker: FC<Props> = ({ label, formik, name }) => {
+const DatePicker: FC<Props> = ({ label, formik, name, className }) => {
   const [selectedDate, setSelectedDate] = useState<any>(null);
   // const now = new Date();
   // const today = {
@@ -18,7 +20,6 @@ const DatePicker: FC<Props> = ({ label, formik, name }) => {
   //   month: now.getMonth(),
   //   day: now.getDay(),
   // };
-
 
   useEffect(() => {
     if (formik?.values[name!]) {
@@ -31,6 +32,7 @@ const DatePicker: FC<Props> = ({ label, formik, name }) => {
     }
   }, [formik?.values[name!]]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleBirthDay = (e: any) => {
     setSelectedDate(e);
     formik.setFieldValue(
@@ -44,7 +46,7 @@ const DatePicker: FC<Props> = ({ label, formik, name }) => {
   };
 
   return (
-    <div className="col-span-2">
+    <div className={clsx("col-span-2", className)}>
       <FormLabel>{label}</FormLabel>
       <DatePickerM
         inputName={name}
@@ -53,10 +55,12 @@ const DatePicker: FC<Props> = ({ label, formik, name }) => {
         // renderInput={renderCustomInput} // custom input renderer
         shouldHighlightWeekends
         locale="fa" // setting locale to Persian
-        inputClassName="chakra-input css-12ppgmq"
+        inputClassName="chakra-input css-12ppgmq !text-[15px]"
         inputPlaceholder=" "
         // minimumDate={today}
         colorPrimary="#3182ce"
+        
+        
       />
     </div>
   );

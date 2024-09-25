@@ -12,6 +12,7 @@ import {
 import "./Table.scss";
 import Cover from "../../cover/Cover";
 import PaginatedItems from "./Pagnation";
+import clsx from "clsx";
 
 export type DataTableProps<Data extends object> = {
   data: Data[];
@@ -52,6 +53,7 @@ export function DataTable<Data extends object>({
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
                       isNumeric={meta?.isNumeric}
+                      className=" !text-center"
                     >
                       {flexRender(
                         header.column.columnDef.header,
@@ -83,7 +85,7 @@ export function DataTable<Data extends object>({
                     <Td
                       key={cell.id}
                       isNumeric={meta?.isNumeric}
-                      className={TdClassName}
+                      className={clsx(TdClassName, "!text-center")}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

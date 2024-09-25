@@ -63,7 +63,7 @@ const data: UnitConversion[] = [
 
 const columnHelper = createColumnHelper<UnitConversion>();
 
-const CallManagment = () => {
+const CallManagement = () => {
   const columns = [
     columnHelper.accessor("date", {
       cell: (info) => info.getValue(),
@@ -98,4 +98,4 @@ const CallManagment = () => {
   );
 };
 
-export default CallManagment;
+export default CallManagement;

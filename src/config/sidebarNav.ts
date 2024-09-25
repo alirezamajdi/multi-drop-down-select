@@ -9,7 +9,7 @@ const sidebarNav = [
     link: "/patients",
     section: "patients",
     icon: "lucide:layout-dashboard", //width:"20"
-    text: "بیماران",
+    text: "ترخیص ها",
   },
   {
     icon: "lucide:layout-dashboard", //width:"20"

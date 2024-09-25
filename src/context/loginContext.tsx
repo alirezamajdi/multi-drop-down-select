@@ -13,7 +13,7 @@ const LoginContext = React.createContext<TContext>({
 });
 
 export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
-  const [isLogin, setIsLogin] = useLocalStorage<boolean>("isLogin", false);
+  const [isLogin, setIsLogin] = useLocalStorage<boolean>("isLogin", true);
 
   function toggleLogin() {
     setIsLogin((prev: boolean) => !prev);
