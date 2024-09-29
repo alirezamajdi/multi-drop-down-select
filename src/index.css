@@ -19,3 +19,9 @@
 .css-12ppgmq {
   font-size: 15px !important;
 }
+
+.bg-auth {
+  background: url(./assets/images/auth-bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

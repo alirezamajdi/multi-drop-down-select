@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useContext } from "react";
 import { useLocalStorage } from "usehooks-ts";
 
 type TContext = {
@@ -6,14 +6,17 @@ type TContext = {
   toggleLogin: () => void;
 };
 
-
 const LoginContext = React.createContext<TContext>({
   isLogin: false,
   toggleLogin: () => {},
 });
 
+export function useLoginContext() {
+  return useContext(LoginContext);
+}
+
 export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
-  const [isLogin, setIsLogin] = useLocalStorage<boolean>("isLogin", true);
+  const [isLogin, setIsLogin] = useLocalStorage<boolean>("isLogin", false);
 
   function toggleLogin() {
     setIsLogin((prev: boolean) => !prev);
@@ -30,5 +33,3 @@ export const LoginContextProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default LoginContext;
-
-
