@@ -2,26 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .flex-center {
-    @apply flex justify-center items-center;
-  }
-  .cover-head {
-    @apply bg-gray-300 px-6 py-3;
-  }
-}
 
-.css-g6pte {
-  -webkit-margin-end: 0 !important;
-  margin-inline-end: 0 !important;
-}
 
-.css-12ppgmq {
-  font-size: 15px !important;
-}
-
-.bg-auth {
-  background: url(./assets/images/auth-bg.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+input {
+  outline: none;
 }
